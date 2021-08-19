@@ -28,9 +28,30 @@ const dataExample = [
 
 
 let myGridView = new GridView();
-myGridView.header = 'Заголовок';
-myGridView.headerClass = ['header','site-header'];
-myGridView.attribute = {
+// myGridView.header = 'Заголовок';
+// myGridView.headerClass = ['header','site-header'];
+// myGridView.attribute = {
+//   company: {
+//     label: "Компания",
+//     src: "html",
+//   },
+//   chef: {
+//     label: "Директор",
+//   },
+//   country: {
+//     label: "Страна",
+//     value: (data) => {
+//       if (data["country"] === "Germany") {
+//         return data["country"] + " map";
+//       }
+//       return data["country"];
+//     },
+//   },
+// };
+const data = {
+header: 'Заголовок',
+headerClass: ['header','site-header'],
+attribute: {
   company: {
     label: "Компания",
     src: "html",
@@ -47,6 +68,12 @@ myGridView.attribute = {
       return data["country"];
     },
   },
-};
-myGridView.data = dataExample;
-myGridView.render();
+},
+data: dataExample
+}
+
+
+// myGridView.data = dataExample;
+myGridView.render(data);
+
+console.log(myGridView);

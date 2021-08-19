@@ -19,7 +19,7 @@ class GridView {
   /**
    * задаем значение заголовка
    */
-  set header(header) {
+  setHeader(header) {
     if (typeof header === "string" && header.trim() != "") {
       this._header = header.trim();
       return true;
@@ -30,7 +30,7 @@ class GridView {
   /**
    * задаем классы заголовка
    */
-  set headerClass(headerClass) {
+  setHeaderClass(headerClass) {
     if (typeof headerClass === "object") {
       this._headerClass = headerClass;
       return true;
@@ -38,7 +38,7 @@ class GridView {
     return false;
   }
 
-  set element(element) {
+  setElement(element) {
     if (document.querySelector(element)) {
       this._element = element;
       return true;
@@ -50,8 +50,13 @@ class GridView {
    * Методы выведения таблицы
    */
 
-  render() {
+  render(data) {
 
+    this.setElement(data.element);
+    this.setHeaderClass(data.headerClass);
+    this.attribute = data.attribute;
+    this.setHeader(data.header);
+    this.data = data.data;
     //вывод заголовка
 
     if (this._header) {
@@ -92,7 +97,7 @@ class GridView {
         for (let key in this.attribute) {
           //создание ячейки таблицы
           let td = document.createElement("td");
-          let value = dataRow[key]
+          let value = dataArr[key];
           //проверяем, есть ли у атрибута свойство value (в которое записана какая-либо проверка значения)
           if (this.attribute[key].value) {
               value = this.attribute[key].value(dataArr);
